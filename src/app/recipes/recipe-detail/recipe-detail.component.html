@@ -1,0 +1,51 @@
+<br>
+<div class="row">
+  <div class="col-xs-12" >
+    <img
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="img-responsive center-block "
+      style="height: 400px;width: 300px ; border-radius: 20px ; border: 5px solid rgb(120, 22, 22); ">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1 style="text-align:center ; color: rgb(120, 22, 22);"><b>{{ recipe.name }}</b></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 " >
+    <div
+      class="btn-group  "
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle  " style="border-radius: 12px; background-color:rgb(120, 22, 22) ;border-color: rgb(120, 22, 22) ; " >
+        <span class="glyphicon glyphicon-list-alt"></span><b> Manage Recipe </b> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a (click)="onAddToShoppingList()" style="cursor: pointer;"><span class="glyphicon glyphicon-ok-sign" style="color:rgb(120, 22, 22);"></span> <b> To Shopping List</b></a></li>
+        <li><a style="cursor: pointer;" (click)="onEditRecipe()"><span class="glyphicon glyphicon-minus-sign" style="color:rgb(120, 22, 22) ;"></span> <b> Edit Recipe</b></a></li>
+        <li><a style="cursor: pointer;" (click)="onDeleteRecipe()"><span class="glyphicon glyphicon-remove-sign" style="color:rgb(240, 178, 20) ;"></span> <b> Delete Recipe</b></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12 " style="text-align:center ;border-radius: 10px;font-size: 20px; ">
+    <b>{{ recipe.description }}</b>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient.name }} ( {{ ingredient.amount }} )
+      </li>
+    </ul>
+  </div>
+</div>
