@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!recipeForm.valid" style="border-radius: 12px; background-color:rgb(120, 22, 22); border-color:rgb(120, 22, 22) ; "><span class="glyphicon glyphicon-floppy-saved"></span><b> Save</b></button>
+          <button type="button" class="btn btn-danger " (click)="onCancel()" style="border-radius: 12px; background-color:rgb(244, 179, 16); border-color:rgb(233, 183, 57); margin: 30px; "><span class="glyphicon glyphicon-floppy-remove"></span><b> Cancel</b></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name"><b>Name</b></label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath"><b>Image URL</b></label>
+            <input
+              type="text"
+              id="imagePath"
+              formControlName="imagePath"
+              class="form-control "
+              #imagePath>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive center-block " style="height: 400px;width: 300px ; border-radius: 20px ; border: 5px solid rgb(120, 22, 22);">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description"><b>Description</b></label>
+            <br>
+            <textarea
+              type="text"
+              id="description"
+              class="form-control"
+              formControlName="description"
+              rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <div
+            class="row"
+            *ngFor="let ingredientCtrl of controls; let i = index"
+            [formGroupName]="i"
+            style="margin-top: 10px;">
+            <div class="col-xs-8">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name">
+            </div>
+            <div class="col-xs-2">
+              <input
+                type="number"
+                class="form-control"
+                formControlName="amount">
+            </div>
+            <div class="col-xs-2">
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDeleteIngredient(i)" style="border-radius: 12px; background-color:rgb(244, 179, 16); border-color:rgb(233, 183, 57);"><span class="glyphicon glyphicon-trash"></span> </button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="onAddIngredient()" style="border-radius: 12px; background-color:rgb(120, 22, 22); border-color:rgb(120, 22, 22) ; "><span class="glyphicon glyphicon-plus"></span><b> Add Ingredient</b></button>
+            </div>
+          </div>
+          <br>  <br>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
